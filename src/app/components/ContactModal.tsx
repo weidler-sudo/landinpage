@@ -15,14 +15,48 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Hier würde die Formular-Logik kommen (z.B. API-Call)
-    console.log('Form submitted:', formData);
-    alert('Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
-    onOpenChange(false);
-    setFormData({ name: '', email: '', company: '', phone: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      // Nutze Env-Variablen (Fallback auf harte Werte, falls .env in Vercel noch nicht gesetzt ist)
+      const apiUrl = import.meta.env.VITE_CRM_API_URL || 'https://novastream-ai-crm.vercel.app';
+      const apiKey = import.meta.env.VITE_CRM_API_KEY || 'novastream_secret_lead_key_2026';
+
+      const response = await fetch(`${apiUrl}/api/leads/webhook`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          kundeName: formData.name,
+          kundeEmail: formData.email,
+          kundeTelefon: formData.phone || undefined,
+          kundeFirma: formData.company,
+          botTyp: "Website Kontaktformular",
+          plattform: "Novastream Landingpage",
+          dealWert: 0,
+          notes: formData.message || "Lead Anfrage über Kontaktformular"
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Fehler beim Senden der Daten.');
+      }
+
+      alert('Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
+      onOpenChange(false);
+      setFormData({ name: '', email: '', company: '', phone: '', message: '' });
+    } catch (error) {
+      console.error('Submit Error:', error);
+      alert('Es gab einen Fehler beim Senden. Bitte versuchen Sie es später noch einmal.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -144,10 +178,15 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 flex items-center justify-center gap-2 group"
+              disabled={isSubmitting}
+              className={`w-full py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg flex items-center justify-center gap-2 group
+                ${isSubmitting 
+                  ? 'bg-slate-700 text-slate-400 cursor-not-allowed shadow-none' 
+                  : 'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white shadow-blue-500/30 hover:shadow-blue-500/50'
+                }`}
             >
-              Jetzt Termin anfragen
-              <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              {isSubmitting ? 'Wird gesendet...' : 'Jetzt Termin anfragen'}
+              {!isSubmitting && <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
             </button>
 
             <p className="text-xs text-slate-500 text-center">
