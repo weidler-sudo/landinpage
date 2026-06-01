@@ -9,6 +9,7 @@ import { CustomChatbotLoader } from './components/CustomChatbotLoader';
 import { SEO } from './components/SEO';
 import { StickyCTA } from './components/StickyCTA';
 import { Bot, Zap, Users, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { Toaster } from './components/ui/sonner';
 
 export default function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -299,6 +300,7 @@ export default function App() {
       {/* Dein eigener Chatbot - Konfiguriere ihn in src/app/components/CustomChatbotLoader.tsx */}
       {/* <CustomChatbotLoader /> */}
       <StickyCTA onOpenModal={() => setIsContactModalOpen(true)} />
+      <Toaster />
     </div>
     </>
   );

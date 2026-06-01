@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { X, Send, User, Mail, Building2, Phone, MessageSquare } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface ContactModalProps {
   open: boolean;
@@ -48,12 +49,16 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
         throw new Error('Fehler beim Senden der Daten.');
       }
 
-      alert('Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
+      toast.success('Erfolgreich gesendet!', {
+        description: 'Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.'
+      });
       onOpenChange(false);
       setFormData({ name: '', email: '', company: '', phone: '', message: '' });
     } catch (error) {
       console.error('Submit Error:', error);
-      alert('Es gab einen Fehler beim Senden. Bitte versuchen Sie es später noch einmal.');
+      toast.error('Senden fehlgeschlagen', {
+        description: 'Es gab einen Fehler beim Senden. Bitte versuchen Sie es später noch einmal.'
+      });
     } finally {
       setIsSubmitting(false);
     }
