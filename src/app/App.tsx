@@ -21,9 +21,9 @@ export default function App() {
   return (
     <>
       <SEO />
-      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white pb-24">
+      <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white pb-24">
         {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section aria-label="Hero - KI Vertriebsautomatisierung" className="relative overflow-hidden">
         {/* Background Glow Effect */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[120px] -z-10"></div>
 
@@ -46,6 +46,7 @@ export default function App() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={() => setIsContactModalOpen(true)}
+                  aria-label="Kostenloses Erstgespräch buchen"
                   className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 flex items-center justify-center gap-2"
                 >
                   Kostenloses Erstgespräch buchen
@@ -54,6 +55,7 @@ export default function App() {
 
                 <button
                   onClick={() => setIsMehrErfahrenOpen(true)}
+                  aria-label="Mehr erfahren über unsere KI Lösungen"
                   className="px-8 py-4 border border-slate-700 hover:border-blue-500/50 rounded-lg font-semibold text-lg transition-all duration-300"
                 >
                   Mehr erfahren
@@ -77,7 +79,7 @@ export default function App() {
 
 
       {/* Features & Benefits */}
-      <section className="py-24 bg-slate-900/30">
+      <section aria-label="Vorteile unserer KI Agenten" className="py-24 bg-slate-900/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
@@ -88,7 +90,7 @@ export default function App() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="group relative p-8 bg-slate-800/50 border border-slate-700 rounded-2xl hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
+            <article className="group relative p-8 bg-slate-800/50 border border-slate-700 rounded-2xl hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
               <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Bot className="w-7 h-7 text-white" />
               </div>
@@ -96,10 +98,10 @@ export default function App() {
               <p className="text-slate-400 leading-relaxed">
                 Ihr KI-Agent beantwortet Anfragen in Echtzeit, qualifiziert Leads automatisch und übergibt nur echte Chancen an Ihr Vertriebsteam – rund um die Uhr, auch nachts und am Wochenende.
               </p>
-            </div>
+            </article>
 
             {/* Feature 2 */}
-            <div className="group relative p-8 bg-slate-800/50 border border-slate-700 rounded-2xl hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
+            <article className="group relative p-8 bg-slate-800/50 border border-slate-700 rounded-2xl hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
               <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Zap className="w-7 h-7 text-white" />
               </div>
@@ -107,10 +109,10 @@ export default function App() {
               <p className="text-slate-400 leading-relaxed">
                 Anbindung an Ihre bestehenden Systeme wie HubSpot, Salesforce oder Pipedrive. Alle Daten werden automatisch synchronisiert – ohne manuellen Aufwand für Ihr Team.
               </p>
-            </div>
+            </article>
 
             {/* Feature 3 */}
-            <div className="group relative p-8 bg-slate-800/50 border border-slate-700 rounded-2xl hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
+            <article className="group relative p-8 bg-slate-800/50 border border-slate-700 rounded-2xl hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
               <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Users className="w-7 h-7 text-white" />
               </div>
@@ -118,13 +120,13 @@ export default function App() {
               <p className="text-slate-400 leading-relaxed">
                 Reduzieren Sie repetitive Aufgaben um bis zu 80%. Ihr Team fokussiert sich auf strategische Aufgaben, während der KI-Agent Routineanfragen übernimmt.
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
 
       {/* How it Works */}
-      <section className="py-24 relative overflow-hidden">
+      <section aria-label="Implementierungsprozess" className="py-24 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[100px] -z-10"></div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -174,7 +176,7 @@ export default function App() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-gradient-to-r from-blue-600 to-cyan-600 relative overflow-hidden">
+      <section aria-label="Jetzt Kontakt aufnehmen" className="py-24 bg-gradient-to-r from-blue-600 to-cyan-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20"></div>
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
@@ -301,7 +303,7 @@ export default function App() {
       {/* <CustomChatbotLoader /> */}
       <StickyCTA onOpenModal={() => setIsContactModalOpen(true)} />
       <Toaster />
-    </div>
+      </main>
     </>
   );
 }

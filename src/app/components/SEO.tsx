@@ -14,19 +14,62 @@ export function SEO({
   url = "https://novastream.ai"
 }: SEOProps) {
   
-  // JSON-LD Structured Data
+  // Advanced JSON-LD Structured Data Graph
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Novastream.ai",
-    "url": url,
-    "logo": `${url}/logo.png`, // Update this with actual logo URL when available
-    "description": description,
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer support",
-      "availableLanguage": "German"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${url}/#organization`,
+        "name": "Novastream.ai",
+        "url": url,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${url}/logo.png`
+        },
+        "description": description,
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "availableLanguage": "German"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${url}/#website`,
+        "url": url,
+        "name": "Novastream.ai | B2B Vertriebsautomatisierung",
+        "publisher": {
+          "@id": `${url}/#organization`
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${url}/#webpage`,
+        "url": url,
+        "name": title,
+        "isPartOf": {
+          "@id": `${url}/#website`
+        },
+        "about": {
+          "@id": `${url}/#organization`
+        },
+        "description": description
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${url}/#service`,
+        "name": "Novastream KI Agenten",
+        "image": `${url}/og-image.jpg`,
+        "url": url,
+        "telephone": "+49000000000",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "DE"
+        },
+        "priceRange": "$$$"
+      }
+    ]
   };
 
   return (
