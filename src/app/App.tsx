@@ -6,6 +6,8 @@ import { DatenschutzModal } from './components/DatenschutzModal';
 import { AGBModal } from './components/AGBModal';
 import { MehrErfahrenModal } from './components/MehrErfahrenModal';
 import { CustomChatbotLoader } from './components/CustomChatbotLoader';
+import { SEO } from './components/SEO';
+import { StickyCTA } from './components/StickyCTA';
 import { Bot, Zap, Users, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 
 export default function App() {
@@ -16,8 +18,10 @@ export default function App() {
   const [isMehrErfahrenOpen, setIsMehrErfahrenOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
-      {/* Hero Section */}
+    <>
+      <SEO />
+      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white pb-24">
+        {/* Hero Section */}
       <section className="relative overflow-hidden">
         {/* Background Glow Effect */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[120px] -z-10"></div>
@@ -293,7 +297,9 @@ export default function App() {
       />
 
       {/* Dein eigener Chatbot - Konfiguriere ihn in src/app/components/CustomChatbotLoader.tsx */}
-      <CustomChatbotLoader />
+      {/* <CustomChatbotLoader /> */}
+      <StickyCTA onOpenModal={() => setIsContactModalOpen(true)} />
     </div>
+    </>
   );
 }
