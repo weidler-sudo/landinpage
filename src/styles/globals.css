@@ -1,0 +1,332 @@
+/* ============================================
+   NOVASTREAM.AI – DESIGN SYSTEM
+   Dark Luxury Tech Palette
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* --- CSS Custom Properties --- */
+:root {
+  /* Colors */
+  --color-bg:           #050A18;
+  --color-bg-2:         #070E22;
+  --color-surface:      rgba(255, 255, 255, 0.04);
+  --color-surface-hover:rgba(255, 255, 255, 0.07);
+  --color-border:       rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(0, 102, 255, 0.4);
+
+  --color-primary:      #0066FF;
+  --color-primary-light:#3385FF;
+  --color-accent:       #00D4FF;
+  --color-violet:       #7C3AED;
+  --color-violet-light: #9B59FF;
+
+  --gradient-primary:   linear-gradient(135deg, #0066FF 0%, #00D4FF 100%);
+  --gradient-violet:    linear-gradient(135deg, #7C3AED 0%, #0066FF 100%);
+  --gradient-hero:      radial-gradient(ellipse at 60% 0%, rgba(0, 102, 255, 0.25) 0%, transparent 60%),
+                        radial-gradient(ellipse at 10% 80%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                        #050A18;
+
+  --color-text:         #FFFFFF;
+  --color-text-muted:   rgba(255, 255, 255, 0.55);
+  --color-text-faint:   rgba(255, 255, 255, 0.30);
+
+  /* Typography */
+  --font-body:          'Inter', system-ui, sans-serif;
+  --font-display:       'Space Grotesk', 'Inter', sans-serif;
+
+  /* Spacing */
+  --section-py:         clamp(5rem, 10vw, 8rem);
+
+  /* Borders */
+  --radius-sm:          8px;
+  --radius-md:          12px;
+  --radius-lg:          20px;
+  --radius-xl:          28px;
+  --radius-pill:        999px;
+
+  /* Shadows */
+  --shadow-glow-blue:   0 0 60px rgba(0, 102, 255, 0.35);
+  --shadow-glow-violet: 0 0 60px rgba(124, 58, 237, 0.35);
+  --shadow-card:        0 4px 24px rgba(0, 0, 0, 0.4);
+
+  /* Transitions */
+  --transition-fast:    150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:    250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:    400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* --- Typography Scale --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.25rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+
+p { line-height: 1.75; }
+
+/* --- Utility Classes --- */
+
+/* Gradient Text */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-violet {
+  background: var(--gradient-violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+}
+.glass-card:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-surface-hover);
+  box-shadow: 0 0 40px rgba(0, 102, 255, 0.12);
+}
+
+/* Gradient Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-base);
+  box-shadow: 0 4px 30px rgba(0, 102, 255, 0.4);
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(0, 102, 255, 0.55);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* Outline Button */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color var(--transition-base), background var(--transition-base), transform var(--transition-fast);
+  white-space: nowrap;
+}
+.btn-outline:hover {
+  border-color: rgba(0, 102, 255, 0.5);
+  background: rgba(0, 102, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Section Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+/* Badge / Pill */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 1rem;
+  background: rgba(0, 102, 255, 0.12);
+  border: 1px solid rgba(0, 102, 255, 0.25);
+  border-radius: var(--radius-pill);
+  color: #60A5FA;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Section Heading */
+.section-label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.section-title {
+  margin-bottom: 1.25rem;
+}
+.section-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+  max-width: 640px;
+}
+
+/* Divider Glow Line */
+.glow-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.5), transparent);
+  border: none;
+}
+
+/* --- Animations --- */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Pulse Glow */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.3); }
+  50%       { box-shadow: 0 0 50px rgba(0, 102, 255, 0.7); }
+}
+
+/* Spin Slow */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Cursor Blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Node Pulse for neural network */
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%       { opacity: 0.9; transform: scale(1.4); }
+}
+
+/* Scroll Reveal (applied via JS class toggle) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* --- Page Layout --- */
+.page-wrapper {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+/* Navbar offset */
+.page-content {
+  padding-top: 80px;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 102, 255, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 102, 255, 0.6);
+}
+
+/* --- Selection --- */
+::selection {
+  background: rgba(0, 102, 255, 0.35);
+  color: #fff;
+}
+
+/* --- Focus Outline --- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
