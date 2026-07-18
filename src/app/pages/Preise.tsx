@@ -1,72 +1,37 @@
-import { ArrowRight, CheckCircle2, X, MessageSquare } from 'lucide-react';
+import { ArrowRight, CheckCircle2, MessageSquare, Bot, Palette } from 'lucide-react';
 import { ScrollReveal } from '../components/ScrollReveal';
 
-const packages = [
+const agentPackages = [
   {
-    id: 'starter',
-    name: 'Starter',
-    subtitle: 'Für den Einstieg',
-    price: 'Auf Anfrage',
-    color: '#6b7280',
-    borderColor: 'rgba(255,255,255,0.1)',
-    features: [
-      { text: '1 KI-Agent (Basis)', included: true },
-      { text: 'Standard CRM-Integration', included: true },
-      { text: 'E-Mail-Benachrichtigungen', included: true },
-      { text: 'Onboarding & Setup', included: true },
-      { text: 'E-Mail-Support', included: true },
-      { text: 'Mehrere Agenten', included: false },
-      { text: 'WhatsApp-Integration', included: false },
-      { text: 'Dedizierter Account Manager', included: false },
-    ],
-  },
-  {
-    id: 'professional',
-    name: 'Professional',
-    subtitle: 'Für wachsende Teams',
+    id: 'lead-agent',
+    name: 'Lead-Vorqualifizierung',
+    subtitle: 'Für den Vertrieb',
     price: 'Auf Anfrage',
     color: '#0066FF',
     borderColor: 'rgba(0,102,255,0.4)',
-    highlight: true,
-    badge: 'Beliebteste Wahl',
     features: [
-      { text: 'Bis zu 3 KI-Agenten', included: true },
-      { text: 'Alle CRM-Integrationen', included: true },
-      { text: 'E-Mail & WhatsApp', included: true },
-      { text: 'Onboarding & Setup', included: true },
-      { text: 'Priority-Support (24h)', included: true },
-      { text: 'Individuelles Training', included: true },
-      { text: 'Performance-Reporting', included: true },
-      { text: 'Dedizierter Account Manager', included: false },
+      { text: 'Vollautomatische Lead-Erfassung', included: true },
+      { text: 'Qualifizierung nach Ihren Kriterien', included: true },
+      { text: 'Nahtlose CRM-Integration', included: true },
+      { text: 'E-Mail & WhatsApp Benachrichtigungen', included: true },
+      { text: 'Individuelles Training auf Ihr Business', included: true },
     ],
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
-    subtitle: 'Für große Unternehmen',
+    id: 'support-agent',
+    name: 'Kundensupport',
+    subtitle: 'Für den Service',
     price: 'Auf Anfrage',
     color: '#7C3AED',
     borderColor: 'rgba(124,58,237,0.4)',
     features: [
-      { text: 'Unbegrenzte KI-Agenten', included: true },
-      { text: 'Alle Integrationen & APIs', included: true },
-      { text: 'Alle Kommunikationskanäle', included: true },
-      { text: 'White-Label-Option', included: true },
-      { text: 'Dedizierter Account Manager', included: true },
-      { text: 'SLA-Garantie', included: true },
-      { text: 'Individuelle Entwicklung', included: true },
-      { text: 'On-Premise-Option', included: true },
+      { text: '24/7 Beantwortung von Kundenanfragen', included: true },
+      { text: 'Training mit Ihrer Wissensdatenbank', included: true },
+      { text: 'Automatische Ticket-Erstellung', included: true },
+      { text: 'Eskalation an menschliche Mitarbeiter', included: true },
+      { text: 'Mehrsprachiger Support möglich', included: true },
     ],
   },
-];
-
-const comparisonRows = [
-  { feature: 'Anzahl Agenten', starter: '1', pro: 'Bis zu 3', enterprise: 'Unbegrenzt' },
-  { feature: 'CRM-Integration', starter: 'Standard', pro: 'Alle', enterprise: 'Alle + Custom' },
-  { feature: 'Kommunikationskanäle', starter: 'E-Mail', pro: 'E-Mail, WhatsApp', enterprise: 'Alle' },
-  { feature: 'Support', starter: 'E-Mail', pro: 'Priority (24h)', enterprise: 'Dediziert + SLA' },
-  { feature: 'Reporting', starter: 'Basis', pro: 'Erweitert', enterprise: 'Voll-Custom' },
-  { feature: 'White-Label', starter: '—', pro: '—', enterprise: '✓' },
 ];
 
 export function Preise({ onOpenContact }: { onOpenContact: () => void }) {
@@ -82,26 +47,36 @@ export function Preise({ onOpenContact }: { onOpenContact: () => void }) {
         <div className="container">
           <span className="badge" style={{ marginBottom: '1.5rem' }}>Preismodelle</span>
           <h1 style={{ marginBottom: '1.25rem' }}>
-            Transparente Preise.{' '}
-            <span className="gradient-text">Maximaler Mehrwert.</span>
+            Individuelle Lösungen.{' '}
+            <span className="gradient-text">Maßgeschneiderte Preise.</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 580, margin: '0 auto' }}>
-            Jedes Unternehmen ist einzigartig. Deshalb erstellen wir für Sie ein maßgeschneidertes Angebot – ohne versteckte Kosten.
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 680, margin: '0 auto' }}>
+            Jedes Unternehmen ist einzigartig. Wir bieten keine starren Pakete, sondern berechnen unsere Preise transparent anhand Ihrer spezifischen Anforderungen.
           </p>
         </div>
       </section>
 
-      {/* ── PRICING CARDS ── */}
-      <section style={{ padding: 'var(--section-py) 0', position: 'relative', zIndex: 1 }}>
+      {/* ── KI AGENTEN ── */}
+      <section style={{ padding: '3rem 0', position: 'relative', zIndex: 1 }}>
         <div className="container">
+          <ScrollReveal style={{ textAlign: 'center', marginBottom: '3rem' }}>
+             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+                <Bot size={32} color="#0066FF" />
+             </div>
+            <h2 className="section-title">KI-Agenten</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>Zwei fokussierte Lösungen für maximalen ROI.</p>
+          </ScrollReveal>
+          
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '1.5rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '2rem',
             alignItems: 'start',
+            maxWidth: 900,
+            margin: '0 auto'
           }}>
-            {packages.map((pkg, i) => (
-              <ScrollReveal key={pkg.id} delay={(i % 4) as 0|1|2|3|4}>
+            {agentPackages.map((pkg, i) => (
+              <ScrollReveal key={pkg.id} delay={(i % 2) as 0|1}>
                 <div
                   className="glass-card"
                   style={{
@@ -109,31 +84,14 @@ export function Preise({ onOpenContact }: { onOpenContact: () => void }) {
                     border: `1px solid ${pkg.borderColor}`,
                     position: 'relative',
                     overflow: 'hidden',
-                    ...(pkg.highlight ? {
-                      background: 'rgba(0,102,255,0.07)',
-                      boxShadow: '0 0 60px rgba(0,102,255,0.2)',
-                    } : {}),
                   }}
                 >
-                  {/* Glow */}
                   <div style={{
                     position: 'absolute', top: -80, right: -80,
                     width: 200, height: 200,
-                    background: `radial-gradient(circle, ${pkg.color}25 0%, transparent 70%)`,
+                    background: `radial-gradient(circle, ${pkg.color}20 0%, transparent 70%)`,
                     pointerEvents: 'none',
                   }} />
-
-                  {pkg.badge && (
-                    <div style={{
-                      position: 'absolute', top: 16, right: 16,
-                      background: 'linear-gradient(135deg, #0066FF, #00D4FF)',
-                      color: '#fff', fontSize: '0.7rem', fontWeight: 700,
-                      padding: '0.25rem 0.75rem', borderRadius: 999,
-                      textTransform: 'uppercase', letterSpacing: '0.06em',
-                    }}>
-                      {pkg.badge}
-                    </div>
-                  )}
 
                   <p style={{ color: pkg.color, fontWeight: 600, fontSize: '0.85rem', marginBottom: '0.25rem', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{pkg.name}</p>
                   <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.875rem', marginBottom: '1.5rem' }}>{pkg.subtitle}</p>
@@ -142,23 +100,20 @@ export function Preise({ onOpenContact }: { onOpenContact: () => void }) {
                     <span style={{
                       fontFamily: "'Space Grotesk', sans-serif",
                       fontSize: '2rem', fontWeight: 700,
-                      color: pkg.highlight ? '#fff' : 'rgba(255,255,255,0.85)',
+                      color: '#fff',
                     }}>
                       {pkg.price}
                     </span>
                     <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.8rem', marginTop: '0.25rem' }}>
-                      Individuelles Angebot nach Beratung
+                      Nach kostenlosem Beratungsgespräch
                     </p>
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '2rem' }}>
                     {pkg.features.map(f => (
                       <div key={f.text} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem' }}>
-                        {f.included
-                          ? <CheckCircle2 size={15} color={pkg.color} style={{ flexShrink: 0 }} />
-                          : <X size={15} color="rgba(255,255,255,0.2)" style={{ flexShrink: 0 }} />
-                        }
-                        <span style={{ color: f.included ? 'rgba(255,255,255,0.7)' : 'rgba(255,255,255,0.25)' }}>
+                        <CheckCircle2 size={15} color={pkg.color} style={{ flexShrink: 0 }} />
+                        <span style={{ color: 'rgba(255,255,255,0.7)' }}>
                           {f.text}
                         </span>
                       </div>
@@ -167,8 +122,8 @@ export function Preise({ onOpenContact }: { onOpenContact: () => void }) {
 
                   <button
                     onClick={onOpenContact}
-                    className={pkg.highlight ? 'btn-primary' : 'btn-outline'}
-                    style={{ width: '100%', justifyContent: 'center' }}
+                    className="btn-outline"
+                    style={{ width: '100%', justifyContent: 'center', borderColor: pkg.borderColor }}
                   >
                     Angebot anfragen <ArrowRight size={15} />
                   </button>
@@ -179,39 +134,68 @@ export function Preise({ onOpenContact }: { onOpenContact: () => void }) {
         </div>
       </section>
 
-      {/* ── COMPARISON TABLE ── */}
+      {/* ── WEBDESIGN (Kerngeschäft) ── */}
       <section style={{
-        padding: 'var(--section-py) 0',
+        padding: '5rem 0',
         background: 'rgba(255,255,255,0.015)',
         borderTop: '1px solid rgba(255,255,255,0.05)',
         position: 'relative', zIndex: 1,
       }}>
         <div className="container">
           <ScrollReveal style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 className="section-title">Vergleich im <span className="gradient-text">Überblick</span></h2>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+                <Palette size={32} color="#00D4FF" />
+             </div>
+            <h2 className="section-title">Webdesign (Kerngeschäft)</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>100% Individuell. 100% SEO-Optimiert.</p>
           </ScrollReveal>
+
           <ScrollReveal>
-            <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr style={{ background: 'rgba(255,255,255,0.03)' }}>
-                    <th style={thStyle}>Funktion</th>
-                    <th style={{ ...thStyle, color: '#9ca3af' }}>Starter</th>
-                    <th style={{ ...thStyle, color: '#60A5FA' }}>Professional</th>
-                    <th style={{ ...thStyle, color: '#a78bfa' }}>Enterprise</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonRows.map((row, i) => (
-                    <tr key={row.feature} style={{ background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)' }}>
-                      <td style={tdStyle}>{row.feature}</td>
-                      <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.5)', textAlign: 'center' }}>{row.starter}</td>
-                      <td style={{ ...tdStyle, color: '#60A5FA', textAlign: 'center' }}>{row.pro}</td>
-                      <td style={{ ...tdStyle, color: '#a78bfa', textAlign: 'center' }}>{row.enterprise}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="glass-card" style={{ 
+              maxWidth: 800, 
+              margin: '0 auto', 
+              padding: '3rem',
+              textAlign: 'center',
+              border: '1px solid rgba(0, 212, 255, 0.3)',
+              background: 'rgba(0, 212, 255, 0.03)',
+              boxShadow: '0 0 50px rgba(0, 212, 255, 0.1)'
+            }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Keine Pakete. Keine Kompromisse.</h3>
+              <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '1.05rem' }}>
+                Beim Webdesign richten wir uns komplett nach dem, was Sie wirklich brauchen. 
+                Egal ob eine messerscharfe Single-Page Landingpage oder ein umfangreicher Multi-Page Auftritt.
+                Der Preis berechnet sich fair nach dem tatsächlichen Aufwand.
+              </p>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2.5rem', textAlign: 'left' }}>
+                 {[
+                   'Single-Page Landingpages', 
+                   'Multi-Page Corporate Websites',
+                   'Vollständige SEO-Optimierung inklusive',
+                   'Premium UI/UX Gestaltung',
+                   'Performance & Pagespeed',
+                   'Individuelle Funktionen'
+                 ].map(feature => (
+                   <div key={feature} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
+                     <CheckCircle2 size={16} color="#00D4FF" />
+                     <span style={{ color: 'rgba(255,255,255,0.8)' }}>{feature}</span>
+                   </div>
+                 ))}
+              </div>
+
+              <div style={{ marginBottom: '2rem' }}>
+                <span style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '2rem', fontWeight: 700,
+                  color: '#fff',
+                }}>
+                  Preis auf Anfrage
+                </span>
+              </div>
+
+              <button onClick={onOpenContact} className="btn-primary" style={{ fontSize: '1.05rem' }}>
+                Projekt besprechen <ArrowRight size={16} />
+              </button>
             </div>
           </ScrollReveal>
         </div>
@@ -246,20 +230,3 @@ export function Preise({ onOpenContact }: { onOpenContact: () => void }) {
   );
 }
 
-const thStyle: React.CSSProperties = {
-  padding: '1rem 1.25rem',
-  textAlign: 'left',
-  fontSize: '0.8rem',
-  fontWeight: 600,
-  textTransform: 'uppercase',
-  letterSpacing: '0.06em',
-  color: 'rgba(255,255,255,0.4)',
-  borderBottom: '1px solid rgba(255,255,255,0.06)',
-};
-
-const tdStyle: React.CSSProperties = {
-  padding: '0.875rem 1.25rem',
-  fontSize: '0.875rem',
-  color: 'rgba(255,255,255,0.7)',
-  borderBottom: '1px solid rgba(255,255,255,0.04)',
-};

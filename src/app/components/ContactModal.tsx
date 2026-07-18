@@ -68,25 +68,25 @@ export function ContactModal({ open, onOpenChange }: ContactModalProps) {
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 animate-in fade-in" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-50 animate-in fade-in zoom-in-95">
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-50 animate-in fade-in zoom-in-95">
           {/* Header */}
-          <div className="relative p-8 border-b border-slate-800">
+          <div className="relative p-10 border-b border-slate-800">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] -z-10"></div>
 
-            <Dialog.Close className="absolute top-6 right-6 p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">
-              <X className="w-5 h-5" />
+            <Dialog.Close className="absolute top-8 right-8 p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">
+              <X className="w-6 h-6" />
             </Dialog.Close>
 
-            <Dialog.Title className="text-3xl font-bold text-white mb-2">
+            <Dialog.Title className="text-4xl font-bold text-white mb-4">
               Kostenloses Erstgespräch
             </Dialog.Title>
-            <Dialog.Description className="text-slate-400">
+            <Dialog.Description className="text-slate-400 text-lg">
               Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen.
             </Dialog.Description>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="p-8 space-y-6">
+          <form onSubmit={handleSubmit} className="p-10 space-y-8">
             {/* Name */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
